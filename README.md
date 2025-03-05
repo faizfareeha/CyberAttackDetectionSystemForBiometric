@@ -1,13 +1,15 @@
-# Face Recognition with Liveness Detection Login on Flask Web application
+# Cyber Attack Detection System For Biometric
+## This project is entirely inspired by @jomariya23156. Please go to https://github.com/jomariya23156/face-recognition-with-liveness-web-login.git for detailed info.
+This readme is taken from @jomariya23156 and changed as per this project
 ## Project Overview
 &nbsp;&nbsp;&nbsp;&nbsp;We have implemented Flask web application login page including face verification (1-to-1 to verify whether the person who is logging in is really that person), for security purpose, with liveness detection mechanism (to check whether the person detected on the camera is a REAL person or FAKE (eg. image, video, etc. of that person)), for Anti-Spoofting (Others pretending to be the person), built with Convolutional Neural Network. After the login page, we also provided a webpage placeholder for future use.   
 &nbsp;&nbsp;&nbsp;&nbsp;**Note:** This project is not an end-to-end solution because it doesn't work in a client-server manner (no use of WebRTC) which means that end users need to have python and all libraries installed (absolutely not practical in a real-world solution). The project meant to work as a starting point or to provide the idea of how all components work together. However, you can check out *Related repos* section below. We have provided some links to extended repos based on this project which happened to make it work with WebRTC.
 
 **Login component:**  
-<img src="./assets/example.jpg" width=374 height=521>  
+<img src="./assets/example.png" width=374 height=521>  
   
 **Loggin in and running inference process:**  
-<img src="./assets/short_demo.gif">
+<img src="./assets/short_demo.png">
 
 **Link to full demo on Youtube (recommend watching):** https://www.youtube.com/watch?v=2S-HmiPNViU 
 
@@ -127,7 +129,7 @@ Check out requirements.txt for the correct version of packages.
 18. **IMPORTANT** After running `app.py` for the first time, go to those adding users to database section in **line 56** and so on that you add in step 15, and comment out all line that you added. The point of doing this is to not adding the same data to the database table which can cause error. (SQL term: the primary key which is username must be unique)
 19. Congratulations! You've done everything :D
 
-## Hope you find our project exciting and useful more or less :D
+## Hope we implemented @jomariya23156 project correctly
 
 ## What can be improved
 - Collect more data in many light conditions and from different genders/ethnics to improve the model (it turned out light intensity and condition play a big role here)
@@ -142,7 +144,7 @@ All login mechanism work properly, but sometimes OpenCV camera doesn't show up w
 - https://www.pyimagesearch.com/2019/03/11/liveness-detection-with-opencv/
 - https://www.youtube.com/watch?v=2Zz97NVbH0U&t=790s  
   
-**image in the log in page:** https://www.welivesecurity.com/wp-content/uploads/2019/12/face-scanning-1-e1575541339743.jpg?h=660&la=en&w=1170
+**image in the log in page:** [https://bi.com/wp-content/uploads/2021/10/blog-understanding-biometric-facial-technology-768x512.jpg]
 
-# Thank you for reading til the end. YOU ARE AMAZING!!! :D
+# Thank you @jomariya23156
 <img src="./static/photos/python_java_meme.gif">
