@@ -145,7 +145,7 @@ All login mechanism work properly, but sometimes OpenCV camera doesn't show up w
 - https://www.pyimagesearch.com/2019/03/11/liveness-detection-with-opencv/
 - https://www.youtube.com/watch?v=2Zz97NVbH0U&t=790s  
   
-**image in the log in page:** [https://bi.com/wp-content/uploads/2021/10/blog-understanding-biometric-facial-technology-768x512.jpg]
+**image in the log in page:** https://bi.com/wp-content/uploads/2021/10/blog-understanding-biometric-facial-technology-768x512.jpg
 
 # Thank you @jomariya23156
-<img src="./static/photos/python_java_meme.gif">
+<img src="./static/photos/afdb.jpg">
