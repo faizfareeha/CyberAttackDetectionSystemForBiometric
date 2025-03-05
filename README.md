@@ -7,10 +7,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;**Note:** This project is not an end-to-end solution because it doesn't work in a client-server manner (no use of WebRTC) which means that end users need to have python and all libraries installed (absolutely not practical in a real-world solution). The project meant to work as a starting point or to provide the idea of how all components work together. However, you can check out *Related repos* section below. We have provided some links to extended repos based on this project which happened to make it work with WebRTC.
 
 **Login component:**  
-<img src="./assets/example.png" width=374 height=521>  
+<img src="./assets/example.png" width=450 height=521>  
   
 **Loggin in and running inference process:**  
 <img src="./assets/demo.png">
+
+**After login page:**  
+<img src="./assets/Final page.png" width=675 height=400>
 
 **Link to full demo on Youtube (recommend watching):** https://www.youtube.com/watch?v=2S-HmiPNViU 
 
@@ -130,7 +133,7 @@ Check out requirements.txt for the correct version of packages.
 18. **IMPORTANT** After running `app.py` for the first time, go to those adding users to database section in **line 56** and so on that you add in step 15, and comment out all line that you added. The point of doing this is to not adding the same data to the database table which can cause error. (SQL term: the primary key which is username must be unique)
 19. Congratulations! You've done everything :D
 
-## Hope we implemented @jomariya23156 project correctly
+## Hope we implemented @jomariya23156's project correctly
 
 ## What can be improved
 - Collect more data in many light conditions and from different genders/ethnics to improve the model (it turned out light intensity and condition play a big role here)
@@ -147,5 +150,5 @@ All login mechanism work properly, but sometimes OpenCV camera doesn't show up w
   
 **image in the log in page:** https://bi.com/wp-content/uploads/2021/10/blog-understanding-biometric-facial-technology-768x512.jpg
 
-# Thank you @jomariya23156
+# Thank you Afrah, Bhagyashree and Disha!
 <img src="./static/photos/afdb.jpg">
