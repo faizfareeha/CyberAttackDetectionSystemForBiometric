@@ -1,12 +1,23 @@
 body{
   padding: 50px;
   font-family: 'Roboto', sans-serif;
-  background-color: #F5F5F5;
+  background-color: #b5dbff;
+}
+/*Navbar*/
+.navbar{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-size: 30px; 
+  font-weight: bold;
+  color: #444657; 
+  height: 50px; 
+  font-family: Arial, Helvetica, sans-serif;
 }
 /*Sign In Form*/
 .signin{
   position: relative;
-  height: 700px;
+  height: 800px;
   width: 500px;
   margin: auto;
   box-shadow: 0px 30px 125px -5px #000;}
@@ -14,12 +25,14 @@ body{
 .back-img{
   position: relative;
   width: 100%;
-  height: 250px;
-  background: url('https://www.welivesecurity.com/wp-content/uploads/2019/12/face-scanning-1-e1575541339743.jpg?h=660&la=en&w=1170')no-repeat   center center;
-background-size: cover;
+  height: 300px;
+  background: url('https://bi.com/wp-content/uploads/2021/10/blog-understanding-biometric-facial-technology-768x512.jpg')no-repeat   center center;
+  background-size: cover;
+  -webkit-animation: hueAnimate .7s infinite;
+  animation: hueAnimate .7s infinite;
 }
 .layer {
-    background-color: rgba(33,150,243,0.5);
+    /* background-color: rgba(33,150,243,0.5); */
     position: absolute;
     top: 0;
     left: 0;
@@ -28,45 +41,38 @@ background-size: cover;
 }
 .active{
   padding-left: 25px;
-  color: #fff;
+  color: #444657;
 }
 .nonactive {
   color: rgba(255, 255, 255, 0.6);
 }
-.sign-in-text{
-  top: 175px;
-  position: absolute;
-  z-index: 1;
-}
 h2 {
-  padding-left: 15px;
-  font-size: 25px;
+  padding-left: 25px;
+  font-size: 20px;
   text-transform: uppercase;
   display: inline-block;
-  font-weight: 300;
-}
-.point{
-  position: absolute;
-  z-index: 1;
-  color: #fff;
-  top: 235px;
-  padding-left: 50px;
-  font-size: 20px;
+  font-weight: 200;
 }
 
 /*form-section*/
 .form-section{
-  padding: 70px 90px 70px 90px;
+  padding: 60px 90px 70px 90px;
 }
-.keep-text{
+input[type="checkbox"] {
+  margin-right: 10px;
+  /* Make checkbox size manageable  */
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  /* Ensure checkbox is visible and clickable */
+  position: relative;  /* Ensure it is not hidden behind other elements */
+  z-index: 10;         /* Give it a higher stacking context */
+}
+.show-text{
   font-size: 15px;
-  color: #BDBDBD;
+  color: #444657;
 }
-.forgot-text{
-  font-size: 12px;
-  color: #BDBDBD;
-  text-align: right;
-}
+
 /*sign-in-btn*/
 .sign-in-btn{
   width: 100%;
@@ -74,5 +80,25 @@ h2 {
   position:absolute;
   bottom:0;
   border-radius: 0px;
-  background-color: rgba(63, 78, 191, 1);
+  background-color: rgb(53, 99, 161);
+}
+@-webkit-keyframes hueAnimate {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+@keyframes hueAnimate {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
 }

@@ -6,10 +6,24 @@
 </head>
 <body>
     <div style="margin-top: 50px" align="center">
-        <h2>Welcome {{ name }}! Your website goes here!</h2> <br>
-        <h3>(づ｡◕‿‿◕｡)づ &nbsp; Python &nbsp; >>>>>>> &nbsp; Java &nbsp; (づ｡◕‿‿◕｡)づ</h3>
+        <h1>CYBER ATTACK DETECTION SYSTEM FOR BIOMETRIC</h1>
+        <h2>Welcome {{ name }}!</h2> <br>
+        <h3>(づ｡◕‿‿◕｡)づ &nbsp; Afrah &nbsp; Bhagyashree &nbsp; Disha &nbsp; Fareeha &nbsp; (づ｡◕‿‿◕｡)づ</h3>
 <!--        original image size 220x275-->
-        <img width=440px height=550px src="{{url_for('static', filename='photos/python_java_meme.gif')}}">
+        <img width=660px height=440px src="{{url_for('static', filename='photos/afdb.jpg')}}" class="display-img">
     </div>
 </body>
 </html>
+<script>
+    const img = document.querySelector('.display-img');
+    let hue = 0;
+  
+    function animateHue() {
+      hue = (hue + 1) % 360; // Increment hue and loop back at 360
+      img.style.filter = `hue-rotate(${hue}deg)`;
+      requestAnimationFrame(animateHue);
+    }
+  
+    animateHue();
+</script>
+  

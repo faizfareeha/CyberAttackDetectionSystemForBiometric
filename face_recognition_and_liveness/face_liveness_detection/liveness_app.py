@@ -8,6 +8,9 @@ import time
 import cv2
 import os
 
+model_directory = "/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection"
+model_paths = os.path.join(model_directory, "liveness.model.h5")
+
 # construct the argument parser and parse the arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-m', '--model', type=str, required=True,
@@ -27,7 +30,9 @@ model_path = os.path.sep.join([args['detector'], 'res10_300x300_ssd_iter_140000.
 detector_net = cv2.dnn.readNetFromCaffe(proto_path, model_path)
 
 # load the liveness detector model and label encoder from disk
-liveness_model = tf.keras.models.load_model(args['model'])
+# liveness_model = tf.keras.models.load_model(args['model'])
+liveness_model = tf.keras.models.load_model(model_paths)
+
 le = pickle.loads(open(args['le'], 'rb').read())
 
 # initialize the video stream and allow camera to warmup

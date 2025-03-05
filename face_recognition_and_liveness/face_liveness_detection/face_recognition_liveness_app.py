@@ -44,7 +44,9 @@ def recognition_liveness(model_path, le_path, detector_folder, encodings, confid
     detector_net = cv2.dnn.readNetFromCaffe(proto_path, model_path)
     
     # load the liveness detector model and label encoder from disk
-    liveness_model = tf.keras.models.load_model(args['model'])
+    # liveness_model = tf.keras.models.load_model(args['model'])
+    liveness_model = tf.keras.models.load_model('/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection/liveness.model.h5')  # Include .h5 extension
+
     le = pickle.loads(open(args['le'], 'rb').read())
     
     # initialize the video stream and allow camera to warmup
@@ -190,7 +192,6 @@ def recognition_liveness(model_path, le_path, detector_folder, encodings, confid
     return name, label_name
         
 if __name__ == '__main__':
-    name, label_name = recognition_liveness('liveness.model', 'label_encoder.pickle', 
-                                            'face_detector', '../face_recognition/encoded_faces.pickle', confidence=0.5)
+    name, label_name = recognition_liveness('liveness.model.h5', 'label_encoder.pickle', 'face_detector', '../face_recognition/encoded_faces.pickle', confidence=0.5)
     print(name, label_name)
         

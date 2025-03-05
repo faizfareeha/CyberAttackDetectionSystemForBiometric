@@ -10,51 +10,63 @@
 
 </head>
 <body>
+  <nav class="navbar">
+    <span class="h1">CYBER ATTACK DETECTION SYSTEM FOR BIOMETRIC</span><br>
+    </div>
+    </div>  
+    </div>
+  </nav>
+  <br><br>
   <div class="signin">
     <div class="back-img">
-      <h2 class="active">Face Login</h2>
-      <div class="sign-in-text">
-        <h3 class="active">Sign In</h3>
-      </div><!--/.sign-in-text-->
-      <div class="layer">
-      </div><!--/.layer-->
-      <p class="point">&#9650;</p>
+    
+      <!-- <p class="point">&#9650;</p> -->
     </div><!--/.back-img-->
     <div class="form-section">
       {% if incorrect == True %}
       <p style="color:red"> Username or Password is incorrect </p>
       {% elif invalid_user == True %}
-      <p style="color:red"> You are not {{username}} </p>
+      <p style="color:red"> You are not {{name}} </p>
       {% endif %}
       <form method="POST">
-        <!--Email-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="sample3" name="username">
-          <label class="mdl-textfield__label" for="sample3">Username</label>
+        <h2 class="active">Face Login</h2>
+        <div class="layer"><!--/.layer-->
+        </div>
+         <!--Email-->
+         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="un" name="username">
+          <label class="mdl-textfield__label" for="un">Username</label>
         </div>
         <br/>
         <br/>
-        <!--Password-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input pattern=".{8,}" class="mdl-textfield__input" type="password" id="sample3" name="password">
-          <label class="mdl-textfield__label" for="sample3">Password</label>
-          <span class="mdl-textfield__error">Minimum 8 characters</span>
-        </div>
-        <br/>
-        <p class="forgot-text">Forgot Password ?</p>
-        <!--CheckBox-->
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-        <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-        <span class="keep-text mdl-checkbox__label">Keep me Signed In</span>
-      </label>
+     <!--Password-->
+     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input pattern=".{8,}" class="mdl-textfield__input" type="password" id="pw" name="password">
+      <label class="mdl-textfield__label" for="pw">Password</label>
+      <span class="mdl-textfield__error">Minimum 8 characters</span>
+    </div>
+    <br/>
+      <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" onclick="myFunction()">
+      <span class="show-text mdl-checkbox__label">Show Password</span>
+        <br><br>
+        <br>
         <button type="submit" class="sign-in-btn mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
-        Sign In
-        </button><!--/button-->
+          Log In
+          </button><!--/button-->
       </form>
-      <br>
 
     </div><!--/.form-section-->
 
  </div><!--/.signin-->
+ <script>	
+	function myFunction() {
+	  var x = document.getElementById("pw");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}
+	</script>
 </body>
 </html>

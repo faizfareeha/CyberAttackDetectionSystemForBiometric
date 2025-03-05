@@ -1,5 +1,6 @@
 # set the matplotlib backend, so figures can be saved in the background
 import matplotlib
+
 matplotlib.use('Agg') # Agg is used for writing files
 
 from livenessnet import LivenessNet # our model
@@ -110,7 +111,12 @@ print(classification_report(y_test.argmax(axis=1), predictions.argmax(axis=1), t
 
 # save model to disk
 print(f"[INFO serializing network to '{args['model']}']")
-model.save(args['model'], save_format='h5')
+# model.save(args['model'])
+model.save(args['model'] + '.h5')  # Assuming args['model'] is a string variable
+
+
+
+
 
 # save the label encoder to disk
 with open(args['le'], 'wb') as file:

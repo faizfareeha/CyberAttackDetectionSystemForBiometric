@@ -1,5 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
+import os
+
+model_directory = "/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection"
+model_path = os.path.join(model_directory, "liveness.model.h5")
+
+# Print the model path to verify
+# print('Model Path:', model_path)
 
 # import our model from folder
 from face_recognition_and_liveness.face_liveness_detection.face_recognition_liveness_app import recognition_liveness
@@ -29,15 +36,15 @@ def login():
         print(user)
         if user is not None and user.password == password:
             session['name'] = user.name # store variable in session
-            detected_name, label_name = recognition_liveness('face_recognition_and_liveness/face_liveness_detection/liveness.model',
-                                                    'face_recognition_and_liveness/face_liveness_detection/label_encoder.pickle',
-                                                    'face_recognition_and_liveness/face_liveness_detection/face_detector',
-                                                    'face_recognition_and_liveness/face_recognition/encoded_faces.pickle',
+            detected_name, label_name = recognition_liveness('/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection/liveness.model.h5',
+                                                    '/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection/label_encoder.pickle',
+                                                    '/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_liveness_detection/face_detector',
+                                                    '/home/fareeha/face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_recognition/encoded_faces.pickle',
                                                     confidence=0.5)
             if user.name == detected_name and label_name == 'real':
                 return redirect(url_for('main'))
             else:
-                return render_template('login_page.html', invalid_user=True, username=username)
+                return render_template('login_page.html', invalid_user=True, username=username, name=user.name)
         else:
             return render_template('login_page.html', incorrect=True)
 
@@ -48,17 +55,35 @@ def main():
     name = session['name']
     return render_template('main_page.html', name=name)
 
+# if __name__ == '__main__':
+#     with app.app_context():
+#         db.create_all()
+
+#         # add users to database
+
+#         new_user = Users(username='afrah', password='123456789', name='afrah')
+#         db.session.add(new_user)
+
+#         new_user_2 = Users(username='faizfareeha', password='123456789', name='Fareeha')
+#         db.session.add(new_user_2)
+
+#         app.run(debug=True)
+
+
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()
 
-    # add users to database
+        # Check if a user exists before adding
+        def add_user_if_not_exists(username, password, name):
+            if not Users.query.filter_by(username=username).first():
+                new_user = Users(username=username, password=password, name=name)
+                db.session.add(new_user)
 
-    # new_user = Users(username='jom_ariya', password='123456789', name='Ariya')
-    # db.session.add(new_user)
+        # Add users if they don't exist
+        add_user_if_not_exists('afrah', '123456789', 'afrah')
+        add_user_if_not_exists('faizfareeha', '123456789', 'Fareeha')
 
-    # new_user_2 = Users(username='earth_ekaphat', password='123456789', name='Ekaphat')
-    # new_user_3 = Users(username='bonus_ekkawit', password='123456789', name='Ekkawit')
-    # db.session.add(new_user_2)
-    # db.session.add(new_user_3)
+        db.session.commit()  # Save changes to the database
+        app.run(debug=True)
 
-    app.run(debug=True)
