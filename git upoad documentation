@@ -1,0 +1,60 @@
+Another documentation..... but this is related to uploading the project folder on github
+
+First step was the I followed this videos tutorial: https://www.youtube.com/watch?v=oh3N_MvU1LI
+The commands include:
+1) First open the folder you wanna upload in terminal
+2) git init
+3) git remote add origin "gitlink"
+4) git remote -v
+5) git add .
+6) git commit -m "comment"
+7) git push origin master
+
+But after step 3 I get an error: remote origin already exists.
+
+so I find that the older project file is already in origin so I go to stackoverflow and get perfect solution:
+git remote rm origin
+git remote add origin git@github.com:username/myapp.git
+
+First I removed the old origin then I ran step 3 again
+
+After running step 4, I found there is an unwanted 'origin-master' remote also existing which I created because I didn't know how to deal with the error after step 3 in vscode
+So I remove that origin-master origin also
+
+Then I ran step 5 and then step 6
+I get this:
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+ 
+ So I ran both the codes by entering my email and name
+ 
+ After that I ran step 6 again and then all my project files path is printed but it also shows: 411 files changed, 187 insertions(+), 97 deletions(-)
+Which is kinda sus, coz it should be taking it as an independent project folder on my system not some modified one.
+
+Anyhow I ignore it and run step 7
+I enter my username and password for authentication, but it gives authentication failed
+So then I learn again from stackoverflow that I have to generate a personal access token and use that instead of password like so:
+From your GitHub account, go to Settings → Developer Settings → Personal Access Token → Tokens (classic) → Generate New Token (Give your password) → Fillup the form → click Generate token → Copy the generated Token, it will be something like ghp_sFhFsSHhTzMDreGRLjmks4Tzuzgthdvfsrta
+
+Now everything looks fine, but when I go to my github to check if the files are that as per the video tutorial, I get a page with this message:
+There isn't anything to compare. Nothing to compare, branches are entirely different commit histories
+and below are all my files that are "changed"
+And no matter what I tried it didn't exactly upload
+
+Thankfully this video tutorial saved me: https://www.youtube.com/watch?v=quxpa1P5BHs&t=2s
+The only thing I had to change was that the guy had his "master" named new-feature
+So I practically ran it like so:
+git checkout master
+git branch main master -f
+git checkout main
+git push origin main -f
+
+Again it asked for my username and password, where I provided the same PAT
+
+Then Voila! everything was successfully uploaded to my github repository
