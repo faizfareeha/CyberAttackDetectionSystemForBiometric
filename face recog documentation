@@ -1,0 +1,57 @@
+13/12/2024 morning
+First I unzipped the file in linux. 
+Then I deleted the extra folders my project was in and moved it to home (root)
+Then I updated and installed python3 and pip3
+After that I ran the requirements.txt using pip
+I got errors in dlib which I resolved using chatgpt
+Then I ran requirements.txt again and it was successful
+Then I ran app.py and it gave me the host link which I had to manually open in the browser
+Furthermore I had to learn the username and password for afrah's account which was present in app.py
+Then I got path error which I resolved by changing the path from afrah's pc to mine in app.py as well as face_recognition_liveness_app.py
+After that since I am using a virtual box, I had to enable the usb access by installing the vm extention package which should be the exact same version as my vm
+Camera (attribute error: None) got resolved
+Finally camera started running on my linux
+Then I ran app.py again. It ran successfuly.
+I entered afrah's username and password. It still recognized my face coz it contains my dataset
+But since my user doesn't exist in the database, my log in access was denied
+I added new user in app.py same way how afrahs code was written, but when I tried to enter my username and password, it showed user doesn't exist
+Now I have to resolve this.
+
+Update: 14/12/2024 morning 9:17
+So what i did is read the github manual, where it tells me to run encode_face.py after adding my folder and pics to dataset. This command creates a encoded_faces.pickel file (which shouldn't exist beforehand)
+After this i started getting error saying my directory doesn't exist, eventhough i gave the correct path.
+I took the help of chatgpt to run the command: find . -name "encode_faces.py" 
+It made me get the exact location of the file: ./face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_recognition/encode_faces.py
+Then i used: cd ./face-recognition-with-liveness-web-login/face_recognition_and_liveness/face_recognition   to navigate to this directory.
+Finally the encode_face.py file started running and the images started processing.
+Next i ran recognize_faces.py from the github code which is supposed to open the webcam and start recognizing the faces whos dataset exists.
+Here I came across another issue, but that is related to the camera hardware issue, which i have to debug
+So i uninstalled the camera device and reinstalled (in windows 11) and it worked
+Successfully recognized my face for few frames, and for few others it called me afrah.
+Update: 14/12/2024 night 11:30
+After this i took a video of my self and saved it in the videos folder.
+Then i ran collect_dataset.py which converted each frame to an image and saved the original video into reals dataset and recorded video into fakes dataset.
+After this I also performed an optional step, which was to capture few photos of hard copy photographs and save it in the fakes folder in images, then to counter that i took pictures of myself and saved it into the corresponding reals folder in images.
+Then i ran face_from_image.py for every real and fake image.
+Finally i ran train_model.py which also contained the command for livenessnet.py and plot.png.
+Here i encountered another error which said that matplotlib module is not installed.
+So i went ahead and installed that. Then train_model.py ran successfully creating two new files in face_liveness_detection folder which are liveness.model.h5 and label_encoder.pickle.
+Finally to check if the model is detecting fake and real faces, i ran liveness.py.
+Here i encountered an issue related to path. liveness.py contained path for the liveness_model but it was afrah's. so i changed that to mine.
+Update: 15/12/2024 early morning 1:30
+So i ran liveness.py and my whole world started crumbling
+bascially the videos i recorded was in a very bad lighting so i think i literally runied my dataset. The demo is showing fake image as real and no face is also getting detected as face.
+Anyways, to troubleshoot i trimmed the parts of the video with bad lighting and re ran the train_model.py
+So i did see improvements, now its not putting a box over nothing, however it still sometimes showing the fake image as real in some frames. But i hope its not for longer than 10 secs or else......
+Okay so finally i ran face_recognition_liveness_app.py which basically the complete project minus the webapp part. And well it took a long time but alhamdulillah it recognized my real face and printed a message "Fareeha real"
+
+Update: 15/12/2024 evening 4:11
+So i did a lot last night but didn't document it so hopefully i can summarize it now.
+I ran app.py but still it showed my user doesn't exist. I went to chatgpt and it gave me an alternate db code for app.py which included a condition. Basically the issue was that i was creating the users that were already existing and beacuse of primary key conflct i was unable to create my user. So chatgpt's code kept a condition where if a column is already created that is the primary key is already existing, then it will not store it in the db again, and the one that is not created will be created. So thats how mine was successfully created. 
+I went ahead a used sqlite3 database.sqlite command to open the database and remove the previous users columns. I also deleted their datasets and images.
+Plus i changed the display of username after it recognizes the wrong face, to the actual name of the user by that name through the database. I took help of chatgpt in that.
+I also figured out how i can modify the login page by opening style.css file in static css folder.
+So far it is working well, the only issue i am having is that for the faces that are not stored, it should show unknown, but it still gives it a name which is wrong.
+Also it sometimes sees my face as fake and the image as real. I guess these issues might be a result of having unbalanced dataset and many images in recognition folder.
+So far rest of the things are working fine.
+Accuracy score after train_model.py is .94
